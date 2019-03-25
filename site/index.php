@@ -81,7 +81,7 @@
 						<!-- Work -->
 							<article id="work">
 								<h2 class="major">Travaille</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<span class="image main"><img src="images/travaille.png" alt="" /></span>
 								<p>ici vous pouvez retrouver tout mes codes ainci que les plants de la serre.<br><br></p>
 								
 								
@@ -96,7 +96,7 @@
 							<!-- partie electronique -->
 							<article id="elec">
 								<h2 class="major">éléctronique</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/elec.png" alt="" /></span>
 								<p>ici toute la partie éléctronique : </p>
 								<li><a href="#capteur1" class="button primary">montage du capteur température/humidité</a></li>
 
@@ -105,7 +105,7 @@
 							<!-- partie informatique -->
 							<article id="info">
 								<h2 class="major">informatique</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/info.png" alt="" /></span>
 								<p>ici toute la partie informatique : </p>
 								<li><a href="#WEB" class="button primary">creation et configuration du serveur apache2 </a></li><br>
 								<li><a href="#BDD" class="button primary">creation et configuration de la Base de Données </a></li><br>
@@ -114,10 +114,10 @@
 
 							</article>
 
-						<!-- About -->
+						<!-- Last hour -->
 							<article id="last">
 								<h2 class="major">12 dernières données</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<span class="image main"><img src="images/pic07.png" alt="" /></span>
 								<p> 12 dernières données </p>
 								<?php
 									try
@@ -461,7 +461,7 @@
 							<!-- serveur WEB -->
 							<article id="WEB">
 								<h2 class="major">Serveur WEB Apache2</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/apache2.png" alt="" /></span>
 								<p>pour povoir afficher nos donnees partout dans le monde nous allons cree un serveur apache2 sur nore raspberry :</p>
 								<p>pour cela ouvrer le terminal et telecharger apache2 via la commande <code>apt-get install apache2</code></p>
 								<p>et voila votre site est operationel dans le registre <code>/var/www/html</code></p>
@@ -471,7 +471,7 @@
 						<!-- Base de données -->
 							<article id="BDD">
 								<h2 class="major">Base de données</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/pic05.png" alt="" /></span>
 								<p>alors pour pouvoir stoquer, taiter et afficher nos données nous allons crée une BDD (Base De Données)  </p>
 								<p>pour commencer nous allons telecharger plusieurs choses grace a la commande <code>apt-get install :</code></p>
 									<ul>
@@ -488,7 +488,7 @@
 							<!-- automatisation -->
 							<article id="auto">
 								<h2 class="major">automatisation des données </h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/pic06.png" alt="" /></span>
 								<p>pour avoir une mise a joure reguliere de données il faut automatiser le lancement des scripts des <a href="#elec">differents capteurs</a></p>
 								<p>nous allons donc cree un fichier bash qui executera les differents fichier en python</p>
 								<p>avec par exemple le code suivant :</p>
@@ -507,7 +507,7 @@ sudo python3 /home/pi/Documents/code_envoie_BDD_DHT22_capteur.py</code></pre>
 						<!-- capteur AM2302-DHT22 -->
 							<article id="capteur1">
 								<h2 class="major">capteur AM2302</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<span class="image main"><img src="images/pic04.png" alt="" /></span>
 								<p>mon premier capteur est un AM2302 capteur d'humidité et de température :</p>								
 								<span class="image main"><img src="images/DHT22-AM2302.jpg" alt="" /></span>
 								<p>avec son cablage :</p>								
