@@ -60,7 +60,7 @@
 							<ul>
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#work">Travaille</a></li>
-								<li><a href="#about">latest</a></li>
+								<li><a href="#last">last hours</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -93,7 +93,7 @@
 
 							</article>
 							
-							<!-- cablage -->
+							<!-- partie electronique -->
 							<article id="elec">
 								<h2 class="major">éléctronique</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
@@ -102,7 +102,7 @@
 
 							</article>
 							
-							<!-- cablage -->
+							<!-- partie informatique -->
 							<article id="info">
 								<h2 class="major">informatique</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
@@ -115,7 +115,7 @@
 							</article>
 
 						<!-- About -->
-							<article id="about">
+							<article id="last">
 								<h2 class="major">12 dernières données</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 								<p> 12 dernières données </p>
