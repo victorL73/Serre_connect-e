@@ -92,7 +92,7 @@
 									<li><a href="#elec" class="button primary">partie éléctronique</a></li><br>
 									<li><a href="#info" class="button primary">partie informatique</a></li><br>
 									<li><a href="documents\documents.rar" class="button primary icon fa-download">Télécharger HTML de la page web</a></li><br>
-									<li><a href="https://github.com/victorL73/Serre-connecter" class="button primary">mon github</a></li><br>
+									<li><a href="https://github.com/victorL73/Serre_connect-e" class="button primary">mon github</a></li><br>
 
 
 							</article>
