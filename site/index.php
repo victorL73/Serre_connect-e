@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE HTML>
 <!--
 	Dimension by HTML5 UP
