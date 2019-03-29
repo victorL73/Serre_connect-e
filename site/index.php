@@ -58,11 +58,11 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#pompes">pompes</a></li>
+								<li><a href="#pompes">tableau de bord</a></li>
 								<li><a href="#work">Travaille</a></li>
 								<li><a href="#last">last hours</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+								<li><a href="#elements">Elements</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -70,13 +70,50 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Intro -->
+						<!-- etat pompes -->
 							<article id="pompes">
-								<h2 class="major">Intro</h2>
+								<h2 class="major">tableau de bord</h2>
 								<span class="image main"><img src="images/pic08.png" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-							</article>
+										<h4>Activation : </h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Boutons</th>
+													<th>ON</th>
+													<th>OFF</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>lumieres</td>
+													<form action="lumieres.php" method="post">
+													<td><input type="submit" name="executer" value="ON" class="button primary" id="ON"></td>
+													<td><input type="submit" name="executer" value="OFF" class="button primary" id="OFF"></td></form>
+												</tr>
+												<tr>
+													<td>pompe</td>
+													<form action="pompe.php" method="post">
+													<td><input type="submit" name="executer" value="ON" class="button primary" id="ON"></td>
+													<td><input type="submit" name="executer" value="OFF" class="button primary" id="OFF"></td></form>
+												</tr>
+												<tr>
+													<td>chauffage</td>
+													<form action="chauffage.php" method="post">
+													<td><input type="submit" name="executer" value="ON" class="button primary" id="ON"></td>
+													<td><input type="submit" name="executer" value="OFF" class="button primary" id="OFF"></td></form>
+												</tr>
+												<tr>
+													<td>Ventilos</td>
+													<form action="ventilo.php" method="post">
+													<td><input type="submit" name="executer" value="ON" class="button primary" id="ON"></td>
+													<td><input type="submit" name="executer" value="OFF" class="button primary" id="OFF"></td></form>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								
+								</article>
 
 						<!-- Work -->
 							<article id="work">
@@ -98,7 +135,8 @@
 								<h2 class="major">éléctronique</h2>
 								<span class="image main"><img src="images/elec.png" alt="" /></span>
 								<p>ici toute la partie éléctronique : </p>
-								<li><a href="#capteur1" class="button primary">montage du capteur température/humidité</a></li>
+								<li><a href="#capteur1" class="button primary">montage du capteur température/humidité</a></li><br>
+								<li><a href="#relai" class="button primary">montage de la pompe</a></li>
 
 							</article>
 							
@@ -134,7 +172,7 @@
 									// Si tout va bien, on peut continuer
 
 									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT MAX(ID_Mesure) FROM Mesure)');
+									$reponse = $bdd->query('SELECT * FROM Mesure ORDER BY `ID_Mesure` DESC LIMIT 0, 12');
 
 									// On affiche chaque entrée une à une
 									while ($donnees = $reponse->fetch())
@@ -147,314 +185,7 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 
 									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-1 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-2 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-3 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-4 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-5 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-6 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-7 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-8 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-9 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-10 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
-								<?php
-									try
-									{
-										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
-									}
-									catch(Exception $e)
-									{
-										// En cas d'erreur, on affiche un message et on arrête tout
-											die('Erreur : '.$e->getMessage());
-									}
-
-									// Si tout va bien, on peut continuer
-
-									// On récupère tout le contenu de la table jeux_video
-									$reponse = $bdd->query('SELECT * FROM   Mesure WHERE  ID_Mesure=(SELECT LAST_INSERT_ID(MAX(ID_Mesure))-11 FROM Mesure)');
-
-									// On affiche chaque entrée une à une
-									while ($donnees = $reponse->fetch())
-									{
-								?>
-								<p>Mesure N° <?php echo $donnees['ID_Mesure']; ?> Faite le <?php echo $donnees['Date_de_mesure']; ?>  Temperature : <?php echo $donnees['Température']; ?>°C   Humidité : <?php echo $donnees['Humidité']; ?>% </p>
-								<?php
-}
-
-									$reponse->closeCursor(); // Termine le traitement de la requête
-
-									?>
+								
 								
 							</article>
 							
@@ -489,16 +220,13 @@
 							<article id="auto">
 								<h2 class="major">automatisation des données </h2>
 								<span class="image main"><img src="images/pic06.png" alt="" /></span>
-								<p>pour avoir une mise a joure reguliere de données il faut automatiser le lancement des scripts des <a href="#elec">differents capteurs</a></p>
-								<p>nous allons donc cree un fichier bash qui executera les differents fichier en python</p>
-								<p>avec par exemple le code suivant :</p>
-								<pre><code>#!/bin/bash
-echo "Commencement du script..."
-sudo python3 /home/pi/Documents/code_envoie_BDD_DHT22_capteur.py</code></pre>
-								<p></p>
-								<p>puis enregistre votre fichier, taper la commande ensuite <code>crontab -e</code>pour acceder au crontab (parametre pour lancer des programes avec une recurence)</p>
+								<p>pour avoir une mise a joure reguliere de données il faut automatiser le lancement des scripts des <a href="#elec">differents capteurs ou relais</a></p>
+								<p>nous allons donc taper la commande <code>crontab -e</code>pour acceder au crontab (parametre pour lancer des programes avec une recurence)</p>
 								<p>et placer le code suivant pour l'executer toutes les heurs </p>
-								<pre><code>0 */1 * * * bash  /home/pi/Documents/lanceur.sh</code></pre>
+								<pre><code>0 */1 * * * python3  /home/pi/Documents/code_envoie_BDD_DHT22_capteur.py</code></pre>
+								<p>pour executer le scripte de recuperation des données du capteur DHT22 toutes les heurs ou bien :</p>
+								<pre><code>0 7 * * * python3  /home/pi/Documents/relais/lumiere/lumieres_on.py</code></pre>
+								<p> pour allumer (ou eteindre) la lumiere toutes les jours a 7h </p>
 								<p>( <a href="https://www.domo-blog.fr/editer-la-crontab-du-raspberry/">ici pour avoir plus de documentation sur crontab</a>)</p>
 
 
@@ -546,6 +274,35 @@ except:
 	bdd.rollback()
 	#fermeture de la connexion
 bdd.close()</code></pre>
+							</article>
+							
+							<!-- relai -->
+							<article id="relai">
+								<h2 class="major">Relais</h2>
+								<span class="image main"><img src="images/pic04.png" alt="" /></span>
+								<p>pour arroser,eclairer, ventiler ou bien rechaufer nos jolies plantes, nous allons utiliser un relai c'est un interupteur commander electroniquement. </p>								
+								<span class="image main"><img src="images/relai.jpg" alt="" /></span>
+								<p>avec les branchemants suivant pour chaques objets: <p>
+								<span class="image main"><img src="images/cablage_relai.png" alt="" /></span>
+								<p>apres avoir brancher notre relai sur la raspberry nous allons faire un petit programme en python pour allumer ou eteindre ce relais : </p>
+								<pre><code>#! /usr/bin/python
+import RPi.GPIO as GPIO ## Import GPIO library
+GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
+GPIO.setup(7, GPIO.OUT) ## Setup GPIO Pin 7 to OUT
+GPIO.output(7,False) ## Turn on GPIO pin 7</code></pre>
+								<p> et remplacer le <code>False</code> par un <code>True</code> pour pouvoir etteindre le relai</p>
+								<p><a href="https://blog.bandinelli.net/index.php?post/2015/07/18/Raspberry-Pi%2C-un-relai%2C-quelques-branchements-%3A-interrupteur-intelligent"> petit blog avec pas mal de petites fonction  </a> </p>
+								<p>tout ce si est bien beau mais maintenant commant allons nous interagire avec lui par notre page web ? </p>
+								<p>je vous laisse donc la magnifique site ainsi que sa video de notre cher Tommy Desrochers <a href="https://td72pro.com/tutoriel-controle-des-gpio-du-raspberry-pi-a-partir-dune-page-web/">sur le sujet </a></p>
+								ainsi que mon code personelle : (j'ai juste mis le tout dans un tableau) 
+								
+								<pre><code>
+< td>lumieres< /td>
+< form action="lumieres.php" method="post">
+< td>< input type="submit" name="executer" value="ON" class="button primary" id="ON">< /td>
+< td>< input type="submit" name="executer" value="OFF" class="button primary" id="OFF">< /td>
+< /form>
+< /tr > </code></pre>
 							</article>
 							
 						<!-- Contact -->
