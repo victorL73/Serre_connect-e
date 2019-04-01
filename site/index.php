@@ -58,7 +58,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#pompes">tableau de bord</a></li>
+								<li><a href="#passwd">tableau de bord</a></li>
 								<li><a href="#work">Travaille</a></li>
 								<li><a href="#last">last hours</a></li>
 								<li><a href="#contact">Contact</a></li>
@@ -70,8 +70,8 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- etat pompes -->
-							<article id="pompes">
+						<!-- tableau de bord -->
+							<article id="TB">
 								<h2 class="major">tableau de bord</h2>
 								<span class="image main"><img src="images/pic08.png" alt="" /></span>
 										<h4>Activation : </h4>
@@ -139,7 +139,18 @@
 								<li><a href="#relai" class="button primary">montage de la pompe</a></li>
 
 							</article>
-							
+							<!-- password -->
+							<article id="passwd">
+								<h2 class="major">mot de passe </h2>
+								<span class="image main"><img src="images/elec.png" alt="" /></span>
+								<p>Veuillez entrer le mot de passe pour obtenir les codes d'accès au serveur de la serre</p>
+								<form action="secret.php" method="post">
+								<p>
+								<input type="password" name="mot_de_passe" />
+								<input type="submit" value="Valider" />
+								</p>
+								</form>
+							</article>
 							<!-- partie informatique -->
 							<article id="info">
 								<h2 class="major">informatique</h2>
@@ -148,10 +159,55 @@
 								<li><a href="#WEB" class="button primary">creation et configuration du serveur apache2 </a></li><br>
 								<li><a href="#BDD" class="button primary">creation et configuration de la Base de Données </a></li><br>
 								<li><a href="#auto" class="button primary">automatisation des données </a></li><br>
+								<li><a href="#secu" class="button primary">securisation de l'acces a la gestion</a></li><br>
 
 
 							</article>
+							<!-- securisation -->
+							<article id="secu">
+								<h2 class="major">securisation de l'acces a la gestion</h2>
+								<span class="image main"><img src="images/info.png" alt="" /></span>
+								<p>tout ca est bien beau mais pour ne pas que tout le monde puisse jouer avec votre serre nous allons mettre un mot de passe. pour se faire nous allons ajouter un <code> < form> </code>avec un espace pour mettre le mdp ainci qu'un bouton pour valider : </p>
+								<pre><code>< form action="secret.php" method="post">
+< p>
+< input type="password" name="mot_de_passe" />
+< input type="submit" value="Valider" />
+< /p>
+< /form> </code></pre>
+<p>ce programe redirige vers un programe secondaire "secret.php" qui contien la verrification du mot de passe </p>
 
+								<pre><code>< !DOCTYPE html>
+< html>
+	< head>
+		< title>Serre autonome By Victor Lerivray< /title>
+		< meta charset="utf-8" />
+		< meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		< link rel="stylesheet" href="assets/css/main.css" />
+		< noscript>< link rel="stylesheet" href="assets/css/noscript.css" />< /noscript>
+	< /head>
+	< body class="is-preload">
+    
+        < ?php
+    if (isset($_POST['mot_de_passe']) AND $_POST['mot_de_passe'] ==  "tonmotdepasse") // Si le mot de passe est bon
+    {
+    // On affiche les codes
+    ?>
+        < h1>clic ici pour acceder au site < /h1>
+		< li>< a href="index.php#TB" class="button primary">site !< /a>< /li>
+        < ?php
+    }
+    else // Sinon, on affiche un message d'erreur
+    {
+        echo '< p>Mot de passe incorrect< /p>';
+    }
+    ?>
+    
+        
+    < /body>
+< /html>
+							</code></pre>
+
+							</article>
 						<!-- Last hour -->
 							<article id="last">
 								<h2 class="major">12 dernières données</h2>
