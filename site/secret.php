@@ -15,7 +15,7 @@
     // On affiche les codes
     ?>
         <h1>clic ici pour acceder au site </h1>
-		<li><a href="index.php" class="button primary">site !</a></li>
+		<li><a href="index.php#TB" class="button primary">site !</a></li>
         <?php
     }
     else // Sinon, on affiche un message d'erreur
