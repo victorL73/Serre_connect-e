@@ -9,6 +9,6 @@
     {
         system("gpio -g write 18 1");
     }
-    header('Location: index.php#pompes');
+    header('Location: index.php#TB');
     
 ?>
