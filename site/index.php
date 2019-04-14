@@ -26,11 +26,12 @@
 							<div class="inner">
 								<h1>Bienvenue sur le site de la serre connectée</h1> 
 
+
 								<?php
 									try
 									{
 										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
+										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'victor', 'Berard73');
 									}
 									catch(Exception $e)
 									{
@@ -53,7 +54,7 @@
 
 									$reponse->closeCursor(); // Termine le traitement de la requête
 
-									?>
+									?> 
 							</div>
 						</div>
 						<nav>
@@ -217,7 +218,7 @@
 									try
 									{
 										// On se connecte à MySQL
-										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'root', 'root');
+										$bdd = new PDO('mysql:host=localhost;dbname=serre;charset=utf8', 'victor', 'Berard73');
 									}
 									catch(Exception $e)
 									{
@@ -241,7 +242,7 @@
 									$reponse->closeCursor(); // Termine le traitement de la requête
 
 									?>
-								
+								 
 								
 							</article>
 							
