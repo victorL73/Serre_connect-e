@@ -12,10 +12,9 @@
         <?php
     if (isset($_POST['mot_de_passe']) AND $_POST['mot_de_passe'] ==  "root") // Si le mot de passe est bon
     {
-    // On affiche les codes
+	header('Location: index.php#TB'); 
     ?>
-        <h1>clic ici pour acceder au site </h1>
-		<li><a href="index.php#TB" class="button primary">site !</a></li>
+	
         <?php
     }
     else // Sinon, on affiche un message d'erreur
